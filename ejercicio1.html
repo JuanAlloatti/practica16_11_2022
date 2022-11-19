@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+    <style>
+    </style>
+</head>
+<body>
+
+    <script>
+        /* EJERCICIO 1. (CONDICIÓN: RESOLVER ENCAPSULANDO EN FUNCIONES)
+Hacer un programa que me permita crear un tablero de ajedrez dinámico, donde
+pueda elegir, pidiéndolo por pantalla, el ancho de las casillas y la cantidad de casillas que tiene que tener el tablero por lado. */
+
+        var width = parseInt(prompt("Dime el ancho de los casilleros"))
+        var squares = parseInt(prompt("Dime cuántos casilleros quieres"))
+        var bodyWidth = width * squares
+
+        const createSquareOdd = function (width) {
+            document.write(`<div style="background-color: black; width: ${width}px; height: ${width}px"></div>`)
+        }
+
+        const createSquareEven = function (width) {
+            document.write(`<div style="background-color: grey; width: ${width}px; height: ${width}px"></div>`)
+        }
+
+        const createRowEven = function (squares){
+            document.write(`<div style="display: flex; width: ${bodyWidth}px">`)
+            for (let i = 1; i <= squares; i++){
+                if (i % 2 == 0) {
+                    createSquareEven(width)
+                } else {
+                    createSquareOdd(width)
+                }
+            }
+            document.write(`</div>`)
+        }
+  
+        const createRowOdd = function (squares){
+            document.write(`<div style="display: flex; width: ${bodyWidth}px">`)
+            for (let i = 1; i <= squares; i++){
+                if (i % 2 == 0) {
+                    createSquareOdd(width)
+                } else {
+                    createSquareEven(width)
+                }
+            }
+            document.write(`</div>`)
+        }
+
+         const createBoard = function (squares){
+            for (let i = 1; i <= squares; i++) {
+                if (i % 2 == 0) {
+                    createRowEven(squares)
+                } else {
+                    createRowOdd(squares)
+                }                
+            }
+        }
+
+    createBoard(squares)  
+
+    </script>
+</body>
+</html>

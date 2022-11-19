@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+    <script>
+        /* EJERCICIO 2. (CONDICIÓN: REUTILIZAR FUNCIONES)
+Crear una aplicación que me permita manipular elementos de texto. La aplicación deberá implementar de manera obligatoria los siguientes métodos.
+El primer método me permitirá contar las letras de cualquier frase que se le pase
+como argumento. Ejemplo: En un lugar de la mancha -> 19 letras
+el segundo método me permitirá saber cuantas veces esta repetida una letra pasada
+por parámetro.
+Ejemplo: En un lugar de la mancha -> A - 4veces
+Y por ultimo que elimine todos los espacios en blanco de una cadena OJO también
+puede tener espacios por delante y por detrás.
+NOTA: Manejar un cadena de caracteres o string como si fuese un array de letras,
+una cadena de caracteres tiene longitud y se puede iterar. */
+
+        var cantidadLetras = 0;
+        var frase = (prompt("Dime una frase")).replaceAll(" ", "")
+        var letraRepetida = prompt("Dime una letra para ver cuántas veces se repite")
+        var cantidadDeRepeticiones = 0;
+
+        const contarLetras = function (pFrase){
+            for (let i = 1; i <= pFrase.length; i++){
+                cantidadLetras++
+            }
+            return cantidadLetras
+           }
+        
+        contarLetras(frase)
+
+        document.write(`<h1>La cantidad de letras en la frase es ${cantidadLetras}.</h1>`)
+
+         const repeticionLetra = function (pFrase, pLetra) {
+            for (let i = 0; i <= pFrase.length; i++){
+                if (pLetra == pFrase[i]){
+                    cantidadDeRepeticiones = cantidadDeRepeticiones + 1
+                }
+            }
+            return cantidadDeRepeticiones
+        }
+
+        repeticionLetra(frase, letraRepetida)
+
+        document.write(`<h1>La cantidad de veces que aparece la letra ${letraRepetida.toUpperCase()} en la frase es ${cantidadDeRepeticiones}.</h1>`)
+
+        document.write(`<h1>La frase sin espacios en blanco es "${frase}".</h1>`)
+
+            
+    </script>
+</body>
+</html>

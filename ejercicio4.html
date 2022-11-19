@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+<body>
+    <script>
+        /* EJERCICIO 4. (CONDICION: REUTILIZAR FUNCIONALIDAD Y ENCAPSULAR CADA ACCIÓN EN UN FUNCIÓN)
+Realizar un programa con un listado de productos.
+Para la realización de este programa tendré que crear un array que tenga productos
+con los siguientes datos.
+name es un string
+price es un number
+ stock es un Boolean
+category es un string y hay 5 categories posibles ‘lacteos’, ‘carnes’, ‘frutas’, ‘verduras’,
+‘pescados’.
+1- Realizar un array con 10 productos de diferentes datos con diferentes categorías.
+2 - Filtrar productos que estén entre 1 y 3 euros (ojo capacidad de abstracción).
+3 - Filtrar por categoria
+4 - filtrar por disposición de stock
+5 - filtrar productos entre 1 y 3 euros que tengan stock */
+
+const products = new Array({
+            name: 'Queso de cabra',
+            price: 0.5,
+            stock: true,
+            category: 'lacteos',
+        }, {
+            name: 'Leche',
+            price: 1,
+            stock: false,
+            category: 'lacteos',
+        }, {
+            name: 'Pollo',
+            price: 1.5,
+            stock: true,
+            category: 'carnes',
+        }, {
+            name: 'Ternera',
+            price: 2,
+            stock: false,
+            category: 'carnes',
+        }, {
+            name: 'Manzana',
+            price: 2.5,
+            stock: false,
+            category: 'frutas',
+        }, {
+            name: 'Banana',
+            price: 3,
+            stock: true,
+            category: 'frutas',
+        }, {
+            name: 'Lechuga',
+            price: 3.5,
+            stock: false,
+            category: 'verduras',
+        }, {
+            name: 'Tomate',
+            price: 4,
+            stock: true,
+            category: 'verduras',
+        }, {
+            name: 'Emperador',
+            price: 4.5,
+            stock: true,
+            category: 'pescados',
+        }, {
+            name: 'Salmón',
+            price: 5,
+            stock: true,
+            category: 'pescados',
+        })
+
+
+        // Productos filtrados por precio
+
+        const productsByPrice = products.filter(function(product) {
+            if (1 <= product.price && product.price <= 3) {
+                return true;
+            }
+        })
+
+        let div = '<div>';
+            productsByPrice.forEach(function(product, index) {
+            div += `<ul>
+                <li>Producto ${index + 1}: ${product.name}</li>
+                <li>Precio: ${product.price} €</li>
+                </ul>`
+        })
+
+        div += '</div>';
+
+         document.write(`<div style="margin: 12px auto; padding: 8px 0px 0px 0px; width: 40%; height: auto; background-color: lightblue; border: 1px solid black; border-radius: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center">Los productos cuyo precio se encuentra entre 1 y 3 euros son: ${div} </div>`) 
+
+
+         // Prodcutos filtrados por categoría
+
+        var categoryToFind = prompt("Elije una categoría entre: carnes, pescados, lacteos, frutas y verduras".toLowerCase())
+
+         const productsByCategory = products.filter(function(product) {
+            if (product.category == categoryToFind) {
+                return true;
+            }
+        })
+
+        let div2 = '<div>';
+            productsByCategory.forEach(function(product, index) {
+            div2 += `<ul>
+                <li>Producto ${index + 1}: ${product.name}</li>
+                <li>Categoría: ${product.category}</li>
+                </ul>`
+        })
+        div2 += '</div>';
+
+        document.write(`<div style="margin: 12px auto; padding: 8px 0px 0px 0px; width: 40%; height: auto; background-color: lightblue; border: 1px solid black; border-radius: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center">Los productos cuya categoría es ${categoryToFind} son: ${div2} </div>`) 
+
+        // Productos en stock
+
+        const productsByStock = products.filter(function(product) {
+            if (product.stock == true) {
+                return true;
+            }
+        })
+
+        let div3 = '<div>';
+            productsByStock.forEach(function(product, index) {
+            div3 += `<ul>
+                <li>Producto ${index + 1}: ${product.name}</li>
+                <li>Stock: Disponible</li>
+                </ul>`
+        })
+        div3 += '</div>';
+
+        document.write(`<div style="margin: 12px auto; padding: 8px 0px 0px 0px; width: 40%; height: auto; background-color: lightblue; border: 1px solid black; border-radius: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center">Los productos en stock son: ${div3} </div>`) 
+        
+        // Productos en stock entre 1 y 3 euros
+
+        // Productos filtrados por precio
+
+        const productsByPriceAndStock = productsByStock.filter(function(product) {
+            if (1 <= product.price && product.price <= 3) {
+                return true;
+            }
+        })
+
+        let div4 = '<div>';
+            productsByPriceAndStock.forEach(function(product, index) {
+            div4 += `<ul>
+                <li>Producto ${index + 1}: ${product.name}</li>
+                <li>Precio: ${product.price} €</li>
+                <li>Stock: Disponible</li>
+                </ul>`
+        })
+
+        div4 += '</div>';
+
+         document.write(`<div style="margin: 12px auto; padding: 8px 0px 0px 0px; width: 40%; height: auto; background-color: lightblue; border: 1px solid black; border-radius: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center">Los productos cuyo precio se encuentra entre 1 y 3 euros son y se encuentran en stock son: ${div4} </div>`) 
+
+
+
+    </script>
+</body>
+</html>
